@@ -8,26 +8,26 @@ function validar() {
     var pass = document.getElementById("pass").value;
     var telefono = document.getElementById("telefono").value;
     const letters = /^[A-Za-z]+$/;
-    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 //seguridad JS LOL
     if (nombre.match(letters)) {
+        var letras = 1;
+    }
+    else {
         var letras = "E";
-    }
-    else {
-        var letras = 0;
 
     }
 
-    if (nombre.match(mailformat)) {
-        var femail = 1;
-    }
-    else {
-        var femail = "E";
+    // if (nombre.match(mailformat)) {
+    //     var femail = 1;
+    // }
+    // else {
+    //     var femail = "E";
 
-    }
+    // } 
 
 
-    if ((nombre === "") && (apellidos === "") && (correo === "") && (usuario === "") && (pass === "") && (telefono === "")) {
+    if ((nombre === "") || (apellidos === "") || (correo === "") || (usuario === "") || (pass === "") ||  (telefono === "")) {
         alert("todos los campos son obligatorios, completar!");
         return false;
     }
@@ -42,10 +42,11 @@ function validar() {
         return false;
     } else if (correo.length > 100) {
         alert("El correo electrónico es muy largo");
-    } else if (femail ===  "E") {
-        alert("El correo electrónico es muy largo");
-        return false;
-    } else if (usuario.length > 20) {
+    }
+/*      else if (femail ===  "E") {
+        alert("No tiene formato email");
+        return false; */
+    else if (usuario.length > 20) {
         alert("El usuario es muy largo");
         return false;
     } else if (telefono.length > 10) {
@@ -55,8 +56,8 @@ function validar() {
         alert("Que el campo teléfono acepte solo datos numéricos.");
         return false;
     } else {
-        alert(`Saludos humano ${nombre} ${apellidos}`);
-        var resultado = `Registrado: ${nombre} ${apellidos}`;
+        alert(`Saludos humano ${nombre} ${apellidos}  Usuario: ${usuario} Contraseña:${pass}`);
+        var resultado = `Registrado: ${nombre} ${apellidos}  Usuario:${usuario} Contraseña: *********`;
         document.getElementById("resultado").innerHTML = resultado;
         return false;
     }

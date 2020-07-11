@@ -35,3 +35,7 @@ body{
      text-align: center;
      color: rgb(255, 255, 255);
   }
+  .pointer {cursor: pointer;}
+  .pointer:hover{
+     background-color: skyblue;
+  }
